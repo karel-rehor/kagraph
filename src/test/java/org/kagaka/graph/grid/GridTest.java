@@ -15,7 +15,6 @@ import org.kagaka.graph.Vertex;
 import org.kagaka.graph.VertexImpl;
 import org.kagaka.graph.grid.Coords2D;
 import org.kagaka.graph.grid.Grid;
-import org.kagaka.life.cell.SimpleLifeVCell;
 
 class GridTest {
 

@@ -5,24 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-/**
- * @author karl
- * 
- * <p>
- * Vertex container of type T to be plugged into a graph.  
- * <p>
- * Edges are simply indicated by a Set of references to adjacent vertices containing the same type.
- * <p>
- * Edges can be one:
- *   <ul> 
- *    <li>One way directional - created with a call to simple addedge()</li>
- *    <li>Mutual or bi-directional - created with a call to addMutualEdge() </li>
- *    </ul>  
- * <p>
- * The Set collection is used to store edges in order to avoid creating any duplicates. It is also synchronized. 
- *
- * @param <T>
- */
 public class VertexImpl<T> implements Vertex<T> {
 
 	private T t;
@@ -60,7 +42,7 @@ public class VertexImpl<T> implements Vertex<T> {
 			return true;
 		if((obj == null) || (getClass() != obj.getClass()))
 			return false;
-		VertexImpl other = (VertexImpl) obj;
+		VertexImpl<T> other =  (VertexImpl<T>) obj;
 		if( t == null) {
 			if(other.get() != null) {
 				return false;
@@ -90,11 +72,11 @@ public class VertexImpl<T> implements Vertex<T> {
 	public void addEdge(Vertex<T> vertex){
 		edges.add(vertex);
 	}
-
+	
 	public void addMutualEdge(Vertex<T> vertex) {
 		addEdge(vertex);
 		if(!vertex.getEdges().contains(this)) {
-			vertex.addEdge((VertexImpl)this);
+			vertex.addEdge((Vertex<T>)this);
 		}
 	}
 
@@ -112,7 +94,7 @@ public class VertexImpl<T> implements Vertex<T> {
 	public void removeEdge(Vertex<T> vertex) {
 		edges.remove(vertex);
 		if(vertex.getEdges().contains(this)) {
-			vertex.removeEdge((VertexImpl)this);
+			vertex.removeEdge((Vertex<T>)this);
 		}
 	}
 

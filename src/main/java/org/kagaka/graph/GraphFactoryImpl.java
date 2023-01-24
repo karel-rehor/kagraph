@@ -9,30 +9,11 @@ import org.kagaka.cell.VertexCell;
 import org.kagaka.cell.VertexCellImpl;
 import org.kagaka.cell.VertexCellFactory;
 import org.kagaka.graph.grid.Grid;
-import org.kagaka.life.cell.SimpleLifeVCell;
+// import org.kagaka.life.cell.SimpleLifeVCell;
 
-/**
- * 
- * @author karl
- *<p>
- * A factory for generating graphs containing Vertices holding the VertexCell type.
- * <p>
- * Currently can generate a Grid container.  
- * <p>
- * Other possible containers for future expansion: cylinder, sphere, cube, etc.
- * 
- * @see org.kagaka.graph.Vertex
- * @see org.kagaka.graph.Graph
- * @see org.kagaka.cell.VertexCellImpl
- *   
- */
+
 public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T>{
-    
-   // public static enum CellType {
-   //         BASE, 
-   //         SIMPLELIFE
-   // };
-    
+ /*       
     public static Grid<VertexCell> createCellGrid(int width, int height){
         
         Grid<VertexCell> grid = new Grid<VertexCell>(width, height);
@@ -43,8 +24,6 @@ public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T>{
             for(int j = 0; j < width; j++) {
 // TODO after debugging revert to random IDs
                         grid.addVertex((Vertex<VertexCell>) VertexCellFactory.createVertexCell(String.format("[%d,%d](%d)", i, j, index)).getVertex());
-//                // TODO after debugging revert to random IDs
-//                grid.addVertex(VertexCellFactory.createVertexCell(String.format("[%d,%d](%d)", i, j, index)).getVertex());
                 index++;
             }
         }
@@ -54,12 +33,13 @@ public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T>{
         return grid;
         
     }
+    */
+    
+    // TODO Implement and test OR Remove this class
 
     @Override
     public Graph<T> createGraph(GraphProperties props) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("This method not yet implemented");
-        // return null;
     }
     
     /*

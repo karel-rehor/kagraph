@@ -1,7 +1,6 @@
 package org.kagaka.cell;
 
 import org.kagaka.graph.Vertex;
-import org.kagaka.graph.VertexImpl;
 import org.kagaka.transform.Transform;
 
 /**

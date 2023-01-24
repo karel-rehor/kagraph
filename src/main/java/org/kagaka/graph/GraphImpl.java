@@ -8,19 +8,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-/**
- * 
- * @author karl
- * 
- * <p>
- * Joins together vertices into a traversable structure.
- * 
- * Vertices are stored as a List.  Edges between vertices will define the overall structure.  
- *
- * @param <T>
- * @see org.kagaka.graph.grid.Grid
- * 
- */
+
 public class GraphImpl<T> implements Graph<T> {
 
 	protected List<Vertex<T>> vertices = new ArrayList<>();
@@ -85,12 +73,7 @@ public class GraphImpl<T> implements Graph<T> {
 	public void removeEdge(VertexImpl<T> v1, VertexImpl<T> v2) {
 		v1.removeEdge(v2);
 	}
-/*
-	public Set<Vertex<? extends T>> getEdgesForVertexOf(T item){
-		int index = vertices.indexOf(new Vertex<>(item));
-		return vertices.get(index).getEdges();
-	}
-*/
+	
 	public String printGraph() {
 		StringBuffer sb = new StringBuffer();
 		for(Vertex<T> v : vertices) {

@@ -9,14 +9,14 @@ import org.kagaka.graph.Vertex;
 // For Debugging purposes
 public class Util {
     
-    public static <T> void dumpVertices(Graph graph) {
+    public static <T> void dumpVertices(Graph<T> graph) {
         List<Vertex<T>> vertices = graph.getVertices();
         for(Vertex<T> vt : vertices) {
             System.out.println(String.format("%d : %s", vertices.indexOf(vt), vt.get()));            
         }        
     }
     
-    public static <T> void dumpGridByDims(Graph graph, GraphProperties props) {
+    public static <T> void dumpGridByDims(Graph<T> graph, GraphProperties props) {
         
         if(props.get("height") == null || props.get("width") == null) {
             throw new IllegalStateException("Grid properties must have height and width");

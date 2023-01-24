@@ -9,8 +9,9 @@ import org.kagaka.graph.Vertex;
 
 public class GridFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Graph<T> createGraph(GraphProperties props) {
+    public <G extends Graph<T>> Grid<T> createGraph(GraphProperties props) {
         
         props.hasKey("height");    
         props.hasKey("width");
@@ -26,15 +27,13 @@ public class GridFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
             for(int j = 0; j < width; j++) {
 // TODO after debugging revert to random IDs
                         grid.addVertex((Vertex<VertexCell>) VertexCellFactory.createVertexCell(String.format("[%d,%d](%d)", i, j, index)).getVertex());
-//                // TODO after debugging revert to random IDs
-//                grid.addVertex(VertexCellFactory.createVertexCell(String.format("[%d,%d](%d)", i, j, index)).getVertex());
                 index++;
             }
         }
         
         grid.joinVertices();
         
-        return (Graph<T>) grid;
+        return (Grid<T>) grid;
     }
 
 }

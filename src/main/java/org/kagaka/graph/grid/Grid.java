@@ -5,7 +5,6 @@ import java.util.List;
 import org.kagaka.GeneralKit;
 import org.kagaka.graph.GraphImpl;
 import org.kagaka.graph.Vertex;
-import org.kagaka.graph.VertexImpl;
 
 /**
  * 
@@ -84,36 +83,25 @@ public class Grid<T> extends GraphImpl<T> {
             throw new IllegalStateException("Cannoint join grid vertices that have not been initialized to a grid larger than 2 items");
         }
         
- //       StringBuffer sb = new StringBuffer();
-        
         for(int i = 0; i < height; i++) {
             for(int j = 0; j < width; j++) {
                 if(j > 0 ) { // add left edge
-                    ((Vertex)vertices.get((i * width) + j)).addMutualEdge(vertices.get((i * width) + (j - 1)));
+                    (vertices.get((i * width) + j)).addMutualEdge(vertices.get((i * width) + (j - 1)));
                 }
                 if(i > 0 ) { // add upper edge
-                    ((Vertex)vertices.get((i * width) + j)).addMutualEdge(vertices.get(((i - 1) * width) + j));
+                    (vertices.get((i * width) + j)).addMutualEdge(vertices.get(((i - 1) * width) + j));
                 }
-   //             sb.append("|" + i + "," + j +"(" + vertices.get((i * width) + j).get() + ")|");
 
             }
-   //         sb.append("\n");
         }
-        
-   //     System.out.println("DEBUG just made grid:\n" + sb );
-        
+                
     }
     
     public Vertex<T> getVertexAt(int x, int y){
         
-  //      System.out.println("DEBUG w " + width + " h " + height);
-   //     System.out.println("DEBUG x " + x + " y " + y);
-        
         if(x >= this.height || y >= this.width) {
             return null;
         }
-        
-  //      System.out.println("(x * width) + y = " + ((x*width)+y));
         
         return vertices.get((x * width) + y);
     }
@@ -143,19 +131,13 @@ public class Grid<T> extends GraphImpl<T> {
 
     
     public Coords2D getVertexCoords(Vertex<T> vertex) {
-        // int index = vertices.indexOf(vertex);
-   //     System.out.println("\n\nDEBUG looking for " + vertex.get());
         int index = 0;
         for(Vertex<T> vt : vertices) {
-         //   System.out.println("DEBUG index " + index + " vt " + vt);
             if(vt.equals(vertex)) {
-            //    System.out.println("DEBUG MATCH!");
                 break;
             }
             index++;
         }
-    //    System.out.println("index " + index);        
-    //    System.out.println("this.height " + this.height + " this.width " + this.width);
         Coords2D c = new Coords2D(index / this.width, index % this.width);
         return c;        
     }

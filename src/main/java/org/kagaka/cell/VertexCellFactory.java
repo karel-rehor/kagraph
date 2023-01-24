@@ -43,13 +43,5 @@ public class VertexCellFactory {
         vc.setVertex(vertex);
         return vc;        
     }
-    
-  /*  
-    public static SimpleLifeVCell joinVertexCell(SimpleLifeVCell slvc, Vertex<SimpleLifeVCell> vertex) {
-        vertex.set(slvc);
-        slvc.setVertex((Vertex)vertex);
-        return slvc;        
-    }
-*/
-    
+        
 }

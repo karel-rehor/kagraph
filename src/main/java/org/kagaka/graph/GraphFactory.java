@@ -4,6 +4,6 @@ import org.kagaka.cell.VertexCell;
 
 public interface GraphFactory<T extends VertexCell> {
     
-    public Graph<T> createGraph(GraphProperties props); 
+    public <G extends Graph<T>> Graph<T> createGraph(GraphProperties props); 
 
 }
