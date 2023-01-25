@@ -8,12 +8,12 @@ State as of 25.01.2023
 
 Defines the following basic types
 
-   * Vertex - any node that can fit into a graph, hold a type and connect with other vertices holding a similar type.  Edges to other vertexes are stored as a Set in each Vertex instance. 
-   * Graph - A collection of vertices.  
-   * Grid - a two dimensional graph where vertices have edges to nearest neighbors in both dimensions. Note that implementations of other graph structures (cylinder, cube, etc.) are possible.  
-   * Cell - Something that can transform itself for a vertex to hold.
-   * VertexCell - Cell with a reference to the Vertex that contains it. Useful in transformations based on neighboring states. 
-   * Factories - to help instantiate and manage the above. 
+   * __Vertex__ - any node that can fit into a graph, hold a type and connect with other vertices holding a similar type.  Edges to other vertexes are stored as a Set in each Vertex instance. 
+   * __Graph__ - A collection of vertices.  
+   * __Grid__ - a two dimensional graph where vertices have edges to nearest neighbors in both dimensions. Note that implementations of other graph structures (cylinder, cube, etc.) are possible.  
+   * __Cell__ - Something that can transform itself for a vertex to hold.
+   * __VertexCell__ - Cell with a reference to the Vertex that contains it. Useful in transformations based on neighboring states. 
+   * __Factories__ - to help instantiate and manage the above. 
 
 ### TODO
 
