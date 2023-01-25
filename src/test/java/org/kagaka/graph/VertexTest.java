@@ -3,7 +3,6 @@ package org.kagaka.graph;
 //import static org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +19,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.jupiter.api.Disabled;
 
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -222,17 +220,7 @@ public class VertexTest {
 				assertTrue(visited2.contains(grid[i][j]));
 			}
 		}
-		
-		/*for(int i = 0; i < 3; i++) {
-			System.out.println("DEBUG walker " + walker.get());
-			Set<Vertex<Coords>> vertices = walker.getEdges();
-     	    if(walker.get().getY() % 2 == 0) { // move right
-     	        
-			}else { // move left
-					
-			}
-		} */
-		
+				
 	}
 
 }

@@ -9,5 +9,7 @@ public interface Cell {
     public Transform getTransform();
     
     public void setTransform(Transform transform);
+    
+    public void transform();
 
 }

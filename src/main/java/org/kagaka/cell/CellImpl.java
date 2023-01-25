@@ -50,4 +50,9 @@ public class CellImpl implements Cell{
         this.transform = transform;
     }
 
+    public void transform() {
+        transform.doIt();
+    
+    }
+
 }

@@ -9,6 +9,8 @@ Original purpose is to renew acquaintance with Java programming.
    * Refactor so that... 
       * Graph library is separate maven project
       * Life consumes/uses the Graph library project
+      * Remove unused resources
+      * Migrate test cases to lifeToy
        
    * Add to github
    * Scripts for building and joining the two projects

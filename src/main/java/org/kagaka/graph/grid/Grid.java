@@ -130,7 +130,7 @@ public class Grid<T> extends GraphImpl<T> {
     }
 
     
-    public <U extends T> Coords2D getVertexCoords(Vertex<U> vertex) {
+    public Coords2D getVertexCoords(Vertex<?> vertex) {
         int index = 0;
         for(Vertex<T> vt : vertices) {
             if(vt.equals(vertex)) {

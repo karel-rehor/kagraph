@@ -7,7 +7,7 @@ import org.kagaka.graph.GraphProperties;
 import org.kagaka.graph.Vertex;
 
 // For Debugging purposes
-public class Util {
+public class GridUtil {
     
     public static <T> void dumpVertices(Graph<T> graph) {
         List<Vertex<T>> vertices = graph.getVertices();
