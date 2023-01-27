@@ -103,7 +103,7 @@ public class VertexTest {
 		assertTrue(sv1.getEdges().size() == 0);
 		svMutable.set(sv1.get());
 		assertTrue(svMutable.get() == sv1.get());
-		System.out.println(String.format("DEBUG hashes sv1 %s : sv2 %s", sv1.hashCode(), sv2.hashCode()));
+//		System.out.println(String.format("DEBUG hashes sv1 %s : sv2 %s", sv1.hashCode(), sv2.hashCode()));
 //		System.out.println(String.format("DEBUG ids sv1 %s : sv2 %s", sv1.getId(), sv2.getId()));
 	}
 	
@@ -124,8 +124,8 @@ public class VertexTest {
 		sv1.addEdge(sv2);
 		assertTrue(sv1.getEdges().contains(sv2));
 		assertFalse(sv2.getEdges().contains(sv1));
-		System.out.println("DEBUG sv1 " + sv1);
-		System.out.println("DEBUG sv2 " + sv2);
+//		System.out.println("DEBUG sv1 " + sv1);
+//		System.out.println("DEBUG sv2 " + sv2);
 		sv1.removeEdge(sv2);
 		assertTrue(sv1.getEdges().size() == 0);
 	}
@@ -135,8 +135,8 @@ public class VertexTest {
 		sv1.addMutualEdge(sv2);
 		assertTrue(sv1.getEdges().contains(sv2));
 		assertTrue(sv2.getEdges().contains(sv1));
-		System.out.println("DEBUG sv1 " + sv1);
-		System.out.println("DEBUG sv2 " + sv2);
+//		System.out.println("DEBUG sv1 " + sv1);
+//		System.out.println("DEBUG sv2 " + sv2);
 		sv1.removeEdge(sv2);
 		assertTrue(sv1.getEdges().size() == 0);
 		assertTrue(sv2.getEdges().size() == 0);
@@ -160,67 +160,34 @@ public class VertexTest {
 	public void testConnectedGrid() {
 				
 		for(Vertex<Coords> v : connectedGrid) {
-			System.out.println("DEBUG v " + v);
-		}
-		Vertex<Coords> origin = connectedGrid.get(0);
-//		Vertex<Coords> walker = (Vertex<Coords>)origin.getEdges().toArray()[0];
-
-		// Depth first Traversal -- 
-		Set<Coords> visited = new LinkedHashSet<Coords>();
-		Stack<Vertex<? extends Coords>> stack = new Stack<Vertex<? extends Coords>>();
-		stack.push(origin);
-		// visited.add(origin);
-		assertTrue(origin.get() == grid[0][0]);
-		
-		System.out.println("\n\nWALKING GRID DEPTH FIRST\n\n");
-		
-		
-		while(!stack.empty()) {
-			Vertex<? extends Coords> c = stack.pop();
-			if(!visited.contains(c.get())) {
-				visited.add(c.get());
-//				System.out.println("DEBUG visited " + c);
-				for(Vertex<? extends Coords> v : c.getEdges()) {
-					stack.push(v);
-				}
+			if(v.get().getX() == 0 && v.get().getY() == 0) {
+			    assertEquals(2, v.getEdges().size());
+			    assertTrue(v.getEdges().contains(connectedGrid.get(1)));
+			    assertTrue(v.getEdges().contains(connectedGrid.get(3)));
 			}
+            if(v.get().getX() == 2 && v.get().getY() == 2) {
+                assertEquals(2, v.getEdges().size());
+                assertTrue(v.getEdges().contains(connectedGrid.get(7)));
+                assertTrue(v.getEdges().contains(connectedGrid.get(5)));
+            }
+            if(v.get().getX() == 0 && v.get().getY() == 2) {
+                assertEquals(2, v.getEdges().size());
+                assertTrue(v.getEdges().contains(connectedGrid.get(1)));
+                assertTrue(v.getEdges().contains(connectedGrid.get(5)));
+            }
+            if(v.get().getX() == 2 && v.get().getY() == 0) {
+                assertEquals(2, v.getEdges().size());
+                assertTrue(v.getEdges().contains(connectedGrid.get(7)));
+                assertTrue(v.getEdges().contains(connectedGrid.get(3)));
+            }
+            if(v.get().getX() == 1 && v.get().getY() == 1) {
+                assertEquals(4, v.getEdges().size());
+                assertTrue(v.getEdges().contains(connectedGrid.get(7)));
+                assertTrue(v.getEdges().contains(connectedGrid.get(5)));
+                assertTrue(v.getEdges().contains(connectedGrid.get(3)));
+                assertTrue(v.getEdges().contains(connectedGrid.get(1)));
+            }			
 		}
-		
-		for(Coords c : visited) {
-			System.out.println("DEBUG visited " + c);
-		}
-		
-		// Breadth first Traversal --
-		Set<Coords> visited2 = new LinkedHashSet<Coords>();
-		Queue<Vertex<? extends Coords>> queue = new LinkedList<Vertex<? extends Coords>>();
-		queue.add(origin);
-		visited2.add(origin.get());
-
-		System.out.println("\n\nWALKING GRID BREADTH FIRST\n\n");
-		
-		while(!queue.isEmpty()) {
-			Vertex<? extends Coords> c = queue.poll();
-			for(Vertex<? extends Coords> v : c.getEdges()) {
-				if(!visited2.contains(v.get())) {
-					visited2.add(v.get());
-//					System.out.println("DEBUG visited " + v);
-					queue.add(v);
-				}
-			}
-		}
-		
-		for(Coords c : visited2) {
-			System.out.println("DEBUG visited " + c);
-		}
-		
-		// assert all coords visited regardless of traversal method
-		for(int i = 0; i < grid.length; i ++) {
-			for(int j = 0; j < grid[i].length; j++) {
-				assertTrue(visited.contains(grid[i][j]));
-				assertTrue(visited2.contains(grid[i][j]));
-			}
-		}
-				
 	}
 
 }

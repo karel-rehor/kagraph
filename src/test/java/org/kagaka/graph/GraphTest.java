@@ -44,21 +44,42 @@ public class GraphTest {
 		
 		Set<Vertex<String>> visitedD = stringGraph.depthFirstTraversal(stringGraph.get(0));
 		
-		for(Vertex<String> vs : visitedD) {
-		    System.out.println("DEBUG visited " + vs.get());
+		String[] depthFirstExpected = {"A","D","C","B"};
+		Vertex<String>[] depthFirstResult = new Vertex[4]; 
+		depthFirstResult = visitedD.toArray(depthFirstResult);
+		
+		assertEquals(depthFirstExpected.length, depthFirstResult.length);
+		
+//		for(Vertex<String> vs : visitedD) {
+//		    System.out.println("DEBUG visited " + vs.get());
+//		}
+		
+		for(int i = 0; i < depthFirstResult.length; i++) {
+		    assertEquals(depthFirstExpected[i], ((Vertex<String>)depthFirstResult[i]).get());
 		}
 		
 		assertEquals(4, visitedD.size());
 		
         Set<Vertex<String>> visitedB = stringGraph.breadthFirstTraversal(stringGraph.get(0));
+
+        String[] breadthFirstExpected = {"A","B","D","C"};
+        Vertex<String>[] breadthFirstResult = new Vertex[4]; 
+        breadthFirstResult = visitedB.toArray(breadthFirstResult);
+
+        assertEquals(breadthFirstExpected.length, breadthFirstResult.length);
         
-        for(Vertex<String> vs : visitedB) {
-            System.out.println("DEBUG visited " + vs.get());
+//        for(Vertex<String> vs : visitedB) {
+//            System.out.println("DEBUG visited " + vs.get());
+//        }
+        
+        for(int i = 0; i < breadthFirstResult.length; i++) {
+            assertEquals(breadthFirstExpected[i], ((Vertex<String>)breadthFirstResult[i]).get());
         }
         
-        for(String s : stringGraph.getContents()) {
-            System.out.println("DEBUG getContents " + s);
-        }
+        
+//        for(String s : stringGraph.getContents()) {
+//            System.out.println("DEBUG getContents " + s);
+//        }
 				
 	}
 

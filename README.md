@@ -34,3 +34,15 @@ Basic lifecycle phases are supported.
    * `mvn package` - make `kagraph-0.0.1-SNAPSHOT.jar` . 
    * `mvn install` - install the jar file to the local maven repo.  
    
+More explicit install. 
+
+```
+mvn install:install-file \
+   -Dfile=/home/karl/edu/java/org.kagaka.graph/target/kagraph-0.0.1-SNAPSHOT.jar \
+   -DgroupId=org.kagaka.graph \
+   -DartifactId=kagraph \
+   -Dversion=0.0.1-SNAPSHOT \
+   -Dpackaging=jar \
+   -DgeneratePom=true
+```   
+   

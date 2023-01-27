@@ -30,7 +30,7 @@ class GridTest {
         Grid<VertexCell> grid = (Grid<VertexCell>) gridFactory.createGraph(gridProps);
         
         
-        
+/*        
         int hIndex = 0;
         int wIndex = 0;
         for(Vertex<? extends VertexCell> vc : grid.getVertices()) {
@@ -42,17 +42,17 @@ class GridTest {
                 hIndex++;
             }
         }
-        
-        System.out.println("==========\n\n");
+*/        
+//        System.out.println("==========\n\n");
         // grid.dumpVertices();
-        GridUtil.dumpVertices(grid);
-        System.out.println("==========\n\n");
+//        GridUtil.dumpVertices(grid);
+//        System.out.println("==========\n\n");
        // grid.dumpGridByDims();
-        GridUtil.dumpGridByDims(grid, gridProps);
+//        GridUtil.dumpGridByDims(grid, gridProps);
         
-        System.out.println("DEBUG getVertexAt(1,2) " + grid.getVertexAt(1, 2).get());
-        System.out.println("DEBUG getVertexAt(0,1) " + grid.getVertexAt(0, 1).get());
-        System.out.println("DEBUG getVertexAt(2,3) " + grid.getVertexAt(2,3).get());
+//        System.out.println("DEBUG getVertexAt(1,2) " + grid.getVertexAt(1, 2).get());
+//        System.out.println("DEBUG getVertexAt(0,1) " + grid.getVertexAt(0, 1).get());
+//        System.out.println("DEBUG getVertexAt(2,3) " + grid.getVertexAt(2,3).get());
         
         grid.getVertexAt(1, 2).get().getTransform().doIt();
         
