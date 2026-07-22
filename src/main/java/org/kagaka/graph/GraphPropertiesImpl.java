@@ -5,21 +5,21 @@ import java.util.Set;
 
 public class GraphPropertiesImpl implements GraphProperties {
 
-    private HashMap<String,String> props;
-    
+    private final HashMap<String, String> props;
+
     public GraphPropertiesImpl() {
         super();
         props = new HashMap<String, String>();
     }
 
     @Override
-    public void set(String key, String value) {
+    public void set(final String key, final String value) {
 
         props.put(key, value);
     }
 
     @Override
-    public String get(String key) {
+    public String get(final String key) {
         return props.get(key);
     }
 
@@ -29,11 +29,11 @@ public class GraphPropertiesImpl implements GraphProperties {
     }
 
     @Override
-    public void hasKey(String key) throws IllegalStateException {
-        if(!props.containsKey(key)) {
+    public void hasKey(final String key) throws IllegalStateException {
+        if (!props.containsKey(key)) {
             throw new IllegalStateException(String.format("Properties must include key: %s", key));
         }
-        
+
     }
 
 }

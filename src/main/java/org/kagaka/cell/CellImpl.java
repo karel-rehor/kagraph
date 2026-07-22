@@ -6,28 +6,33 @@ import org.kagaka.transform.Transform;
 /**
  *
  * @author karl
- *
+ * <p>
  * Base class for anything that needs a unique ID and that can be transformed.
  *
  */
-public class CellImpl implements Cell{
+public class CellImpl implements Cell {
 
-    final private String id;
-    protected Transform transform = () -> {};
+    private final String id;
+    protected Transform transform = () -> {
+    };
 
-    public CellImpl(String id) {
+    public CellImpl(final String id) {
         super();
         this.id = id;
-        this.transform = () -> {System.out.println(this.id + ": I've been transformed!");};
+        this.transform = () -> {
+            System.out.println(this.id + ": I've been transformed!");
+        };
     }
 
     public CellImpl() {
         super();
         this.id = GeneralKit.genHexId(16);
-        this.transform = () -> {System.out.println(this.id + " I've been transformed!");};
+        this.transform = () -> {
+            System.out.println(this.id + " I've been transformed!");
+        };
     }
 
-    public CellImpl(Transform transform) {
+    public CellImpl(final Transform transform) {
         super();
         this.id = GeneralKit.genHexId(GeneralKit.ID_LENGTH);
         this.transform = transform;
@@ -46,13 +51,13 @@ public class CellImpl implements Cell{
         return transform;
     }
 
-    public void setTransform(Transform transform) {
+    public void setTransform(final Transform transform) {
         this.transform = transform;
     }
 
     public void transform() {
         transform.doIt();
-    
+
     }
 
 }
