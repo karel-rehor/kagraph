@@ -8,7 +8,16 @@
 
 name: Java CI with Maven - verify
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - main
+      - chore/*
+      - feature/*
+      - develop
+  pull_request:
+    branches:
+      - main
 
 jobs:
   tests:
