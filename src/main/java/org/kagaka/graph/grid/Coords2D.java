@@ -45,7 +45,7 @@ public class Coords2D {
 
     @Override
     public int hashCode() {
-        return System.identityHashCode(this);
+        return 1009;
     }
 
 
