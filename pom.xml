@@ -13,6 +13,8 @@
         An elementary graph library, used for educational purposes only.
     </description>
 
+    <url>https://github.com/karel-rehor/kagraph</url>
+
     <licenses>
         <license>
             <name>The MIT License (MIT)</name>
@@ -28,6 +30,13 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:git@github.com:karel-rehor/kagraph.git</connection>
+        <developerConnection>scm:git:git@github.com:karel-rehor/kagraph.git</developerConnection>
+        <url>https://github.com/karel-rehor/kagraph/tree/main</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -36,9 +45,13 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
+            <id>central</id>
             <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
         </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
     <!-- dependencyManagement>
@@ -162,6 +175,53 @@
                         </execution>
                     </executions>
 
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>0.5.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <autoPublish>false</autoPublish>
+                        <deploymentName>${project.artifactId}:${project.version}</deploymentName>
+                        <waitUntil>validated</waitUntil>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.6.3</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.3.1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
