@@ -9,14 +9,37 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>kagraph</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <description>
+        An elementary graph library, used for educational purposes only.
+    </description>
+
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>https://raw.githubusercontent.com/InfluxCommunity/influxdb3-java/main/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Karel Rehor</name>
+            <email>karl.koerner@bonitoo.io</email>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <!-- dependencyManagement>
         <dependencies>
