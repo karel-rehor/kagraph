@@ -6,8 +6,15 @@ import org.kagaka.graph.Graph;
 import org.kagaka.graph.GraphFactory;
 import org.kagaka.graph.GraphProperties;
 
+/**
+ * <p>GridFactoryImpl class.</p>
+ *
+ * @author karl
+ * @version $Id: $Id
+ */
 public class GridFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
 
+    /** {@inheritDoc} */
     @SuppressWarnings("unchecked")
     @Override
     public <G extends Graph<T>> Grid<T> createGraph(final GraphProperties props) {

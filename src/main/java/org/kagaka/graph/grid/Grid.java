@@ -7,6 +7,7 @@ import org.kagaka.graph.GraphImpl;
 import org.kagaka.graph.Vertex;
 
 /**
+ * <p>Grid class.</p>
  *
  * @param <T>
  * @author karl
@@ -14,6 +15,7 @@ import org.kagaka.graph.Vertex;
  * Graph in the shape of a two dimensional grid
  * <p>
  * Coordinate indices function from top to bottom and left to right, like when indexing monitor pixels.
+ * @version $Id: $Id
  */
 public class Grid<T> extends GraphImpl<T> {
 
@@ -23,6 +25,13 @@ public class Grid<T> extends GraphImpl<T> {
     final int width;
     final String id;
 
+    /**
+     * <p>Constructor for Grid.</p>
+     *
+     * @param vertices a {@link java.util.List} object
+     * @param width a int
+     * @param height a int
+     */
     public Grid(final List<Vertex<T>> vertices, final int width, final int height) {
         super(vertices);
         this.height = height;
@@ -30,6 +39,12 @@ public class Grid<T> extends GraphImpl<T> {
         this.id = GeneralKit.genHexId(GeneralKit.ID_LENGTH);
     }
 
+    /**
+     * <p>Constructor for Grid.</p>
+     *
+     * @param width a int
+     * @param height a int
+     */
     public Grid(final int width, final int height) {
         super();
         this.height = height;
@@ -38,19 +53,37 @@ public class Grid<T> extends GraphImpl<T> {
     }
 
 
+    /**
+     * <p>Getter for the field <code>height</code>.</p>
+     *
+     * @return a int
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * <p>Getter for the field <code>width</code>.</p>
+     *
+     * @return a int
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * <p>Getter for the field <code>id</code>.</p>
+     *
+     * @return a {@link java.lang.String} object
+     */
     public String getId() {
         return id;
     }
 
     // TODO - remove after debugging complete
+    /**
+     * <p>dumpVertices.</p>
+     */
     public void dumpVertices() {
 
         for (Vertex<T> vt : this.vertices) {
@@ -59,6 +92,9 @@ public class Grid<T> extends GraphImpl<T> {
     }
 
     // TODO - remove after debugging complete
+    /**
+     * <p>dumpGridByDims.</p>
+     */
     public void dumpGridByDims() {
 
         StringBuffer sb = new StringBuffer();
@@ -79,6 +115,9 @@ public class Grid<T> extends GraphImpl<T> {
 
     }
 
+    /**
+     * <p>joinVertices.</p>
+     */
     public void joinVertices() {
         if (vertices == null || vertices.size() < 2) {
             throw new IllegalStateException(
@@ -100,6 +139,13 @@ public class Grid<T> extends GraphImpl<T> {
 
     }
 
+    /**
+     * <p>getVertexAt.</p>
+     *
+     * @param x a int
+     * @param y a int
+     * @return a {@link org.kagaka.graph.Vertex} object
+     */
     public Vertex<T> getVertexAt(final int x, final int y) {
 
         if (x >= this.height || y >= this.width) {
@@ -109,6 +155,12 @@ public class Grid<T> extends GraphImpl<T> {
         return vertices.get((x * width) + y);
     }
 
+    /**
+     * <p>getVertexAt.</p>
+     *
+     * @param coord a {@link org.kagaka.graph.grid.Coords2D} object
+     * @return a {@link org.kagaka.graph.Vertex} object
+     */
     public Vertex<T> getVertexAt(final Coords2D coord) {
         if (coord.getX() >= this.height || coord.getY() >= this.width) {
             return null;
@@ -117,6 +169,13 @@ public class Grid<T> extends GraphImpl<T> {
 
     }
 
+    /**
+     * <p>getAt.</p>
+     *
+     * @param x a int
+     * @param y a int
+     * @return a T object
+     */
     public T getAt(final int x, final int y) {
         if (x >= this.height || y >= this.width) {
             return null;
@@ -125,6 +184,12 @@ public class Grid<T> extends GraphImpl<T> {
 
     }
 
+    /**
+     * <p>getAt.</p>
+     *
+     * @param coords a {@link org.kagaka.graph.grid.Coords2D} object
+     * @return a T object
+     */
     public T getAt(final Coords2D coords) {
         if (coords.getX() >= this.height || coords.getY() >= this.width) {
             return null;
@@ -133,6 +198,12 @@ public class Grid<T> extends GraphImpl<T> {
     }
 
 
+    /**
+     * <p>getVertexCoords.</p>
+     *
+     * @param vertex a {@link org.kagaka.graph.Vertex} object
+     * @return a {@link org.kagaka.graph.grid.Coords2D} object
+     */
     public Coords2D getVertexCoords(final Vertex<?> vertex) {
         int index = 0;
         for (Vertex<T> vt : vertices) {

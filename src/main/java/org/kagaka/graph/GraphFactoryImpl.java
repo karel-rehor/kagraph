@@ -4,6 +4,12 @@ import org.kagaka.cell.VertexCell;
 // import org.kagaka.life.cell.SimpleLifeVCell;
 
 
+/**
+ * <p>GraphFactoryImpl class.</p>
+ *
+ * @author karl
+ * @version $Id: $Id
+ */
 public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
 /*
     public static Grid<VertexCell> createCellGrid(int width, int height){
@@ -30,6 +36,7 @@ public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
 
     // TODO Implement and test OR Remove this class
 
+    /** {@inheritDoc} */
     @Override
     public Graph<T> createGraph(final GraphProperties props) {
         throw new UnsupportedOperationException("This method not yet implemented");

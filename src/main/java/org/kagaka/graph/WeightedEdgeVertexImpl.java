@@ -2,12 +2,23 @@ package org.kagaka.graph;
 
 import java.util.Hashtable;
 
+/**
+ * <p>WeightedEdgeVertexImpl class.</p>
+ *
+ * @author karl
+ * @version $Id: $Id
+ */
 public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements WeightedEdgeVertex<T> {
 
     static double maxWeight = 1.0;
     static double minWeight = -1.0;
     Hashtable<WeightedEdgeVertex<T>, Double> weights;
 
+    /**
+     * <p>Constructor for WeightedEdgeVertexImpl.</p>
+     *
+     * @param t a T object
+     */
     public WeightedEdgeVertexImpl(final T t) {
         super(t);
         weights = new Hashtable<WeightedEdgeVertex<T>, Double>();
@@ -21,30 +32,35 @@ public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements Weighted
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public Double getMaxWeight() {
         // TODO Auto-generated method stub
         return maxWeight;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Double getMinWeight() {
         // TODO Auto-generated method stub
         return minWeight;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Hashtable<WeightedEdgeVertex<T>, Double> getWeights() {
         // TODO Auto-generated method stub
         return weights;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Double getWeight(final WeightedEdgeVertex<T> key) {
         // if Hashtable.get() returns null cannot implicitly get Double.doubleValue()
         return weights.get(key);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setWeight(final WeightedEdgeVertex<T> key, final Double val) {
         checkWeight(val);
@@ -54,6 +70,7 @@ public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements Weighted
         weights.put(key, val);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void addEdge(final WeightedEdgeVertex<T> vertex, final Double weight) {
         checkWeight(weight);
@@ -61,6 +78,7 @@ public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements Weighted
         weights.put(vertex, weight);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void addMutualEdge(final WeightedEdgeVertex<T> vertex, final Double weight, final Double myWeight) {
         addEdge(vertex, weight);
@@ -69,6 +87,7 @@ public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements Weighted
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeWeightedEdge(final WeightedEdgeVertex<T> vertex) {
         edges.remove(vertex);
@@ -78,6 +97,7 @@ public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements Weighted
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeAllWeightedEdges() {
         super.removeAllEdges();

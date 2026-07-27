@@ -7,12 +7,24 @@ import org.kagaka.graph.GraphProperties;
 import org.kagaka.graph.Vertex;
 
 // For Debugging purposes
+/**
+ * <p>GridUtil class.</p>
+ *
+ * @author karl
+ * @version $Id: $Id
+ */
 public final class GridUtil {
 
     private GridUtil() {
         // pass
     }
 
+    /**
+     * <p>dumpVertices.</p>
+     *
+     * @param graph a {@link org.kagaka.graph.Graph} object
+     * @param <T> a T class
+     */
     public static <T> void dumpVertices(final Graph<T> graph) {
         List<Vertex<T>> vertices = graph.getVertices();
         for (Vertex<T> vt : vertices) {
@@ -20,6 +32,13 @@ public final class GridUtil {
         }
     }
 
+    /**
+     * <p>dumpGridByDims.</p>
+     *
+     * @param graph a {@link org.kagaka.graph.Graph} object
+     * @param props a {@link org.kagaka.graph.GraphProperties} object
+     * @param <T> a T class
+     */
     public static <T> void dumpGridByDims(final Graph<T> graph, final GraphProperties props) {
 
         if (props.get("height") == null || props.get("width") == null) {

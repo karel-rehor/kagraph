@@ -5,29 +5,50 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+/**
+ * <p>VertexImpl class.</p>
+ *
+ * @author karl
+ * @version $Id: $Id
+ */
 public class VertexImpl<T> implements Vertex<T> {
 
     Set<Vertex<T>> edges;
     private T t;
 
+    /**
+     * <p>Constructor for VertexImpl.</p>
+     */
     public VertexImpl() {
         super();
         t = null;
         edges = Collections.synchronizedSet(new HashSet<Vertex<T>>());
     }
 
+    /**
+     * <p>Constructor for VertexImpl.</p>
+     *
+     * @param t a T object
+     */
     public VertexImpl(final T t) {
         super();
         this.t = t;
         edges = Collections.synchronizedSet(new HashSet<Vertex<T>>());
     }
 
+    /**
+     * <p>Constructor for VertexImpl.</p>
+     *
+     * @param t a T object
+     * @param edges a {@link java.util.Set} object
+     */
     public VertexImpl(final T t, final Set<Vertex<T>> edges) {
         super();
         this.t = t;
         this.edges = edges;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -35,6 +56,7 @@ public class VertexImpl<T> implements Vertex<T> {
         return prime * base + ((t == null) ? 0 : t.hashCode());
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -51,26 +73,44 @@ public class VertexImpl<T> implements Vertex<T> {
         }
     }
 
+    /**
+     * <p>get.</p>
+     *
+     * @return a T object
+     */
     public T get() {
         return t;
     }
 
+    /**
+     * <p>set.</p>
+     *
+     * @param t a T object
+     */
     public void set(final T t) {
         this.t = t;
     }
 
+    /**
+     * <p>Getter for the field <code>edges</code>.</p>
+     *
+     * @return a {@link java.util.Set} object
+     */
     public Set<Vertex<T>> getEdges() {
         return edges;
     }
 
+    /** {@inheritDoc} */
     public void setEdges(final Set<Vertex<T>> edges) {
         this.edges = edges;
     }
 
+    /** {@inheritDoc} */
     public void addEdge(final Vertex<T> vertex) {
         edges.add(vertex);
     }
 
+    /** {@inheritDoc} */
     public void addMutualEdge(final Vertex<T> vertex) {
         addEdge(vertex);
         if (!vertex.getEdges().contains(this)) {
@@ -78,6 +118,7 @@ public class VertexImpl<T> implements Vertex<T> {
         }
     }
 
+    /** {@inheritDoc} */
     public Vertex<T> getEdge(final int n) {
         int index = 0;
         for (Vertex<T> v : edges) {
@@ -89,6 +130,7 @@ public class VertexImpl<T> implements Vertex<T> {
         return null;
     }
 
+    /** {@inheritDoc} */
     public void removeEdge(final Vertex<T> vertex) {
         edges.remove(vertex);
         if (vertex.getEdges().contains(this)) {
@@ -96,6 +138,9 @@ public class VertexImpl<T> implements Vertex<T> {
         }
     }
 
+    /**
+     * <p>removeAllEdges.</p>
+     */
     public void removeAllEdges() {
         // cannot use local remove Edge
         // so first remove mutual links back to this
@@ -106,6 +151,7 @@ public class VertexImpl<T> implements Vertex<T> {
         edges.removeAll(edges);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();

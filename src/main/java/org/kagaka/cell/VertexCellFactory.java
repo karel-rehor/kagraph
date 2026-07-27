@@ -8,9 +8,12 @@ import org.kagaka.graph.WeightedEdgeVertex;
 
 /**
  *
+ * Factory for creating VertexCells.
+ *
  * @author karl
  * <p>
  * Factory with methods for creating and binding vertices and vertex aware cells.
+ * @version $Id: $Id
  */
 public final class VertexCellFactory {
 
@@ -18,6 +21,11 @@ public final class VertexCellFactory {
 
     }
 
+    /**
+     * <p>createVertexCell.</p>
+     *
+     * @return a {@link org.kagaka.cell.VertexCell} object
+     */
     public static VertexCell createVertexCell() {
         VertexImpl<VertexCell> vertex = new VertexImpl<VertexCell>();
         VertexCell vc = new VertexCellImpl(vertex);
@@ -25,6 +33,12 @@ public final class VertexCellFactory {
         return vc;
     }
 
+    /**
+     * <p>createVertexCell.</p>
+     *
+     * @param id a {@link java.lang.String} object
+     * @return a {@link org.kagaka.cell.VertexCell} object
+     */
     public static VertexCell createVertexCell(final String id) {
         VertexImpl<VertexCell> vertex = new VertexImpl<VertexCell>();
         VertexCell vc = new VertexCellImpl(id, vertex);
@@ -32,6 +46,12 @@ public final class VertexCellFactory {
         return vc;
     }
 
+    /**
+     * <p>createVertexCell.</p>
+     *
+     * @param vertex a {@link org.kagaka.graph.Vertex} object
+     * @return a {@link org.kagaka.cell.VertexCell} object
+     */
     public static VertexCell createVertexCell(final Vertex<VertexCell> vertex) {
         VertexCell vc = new VertexCellImpl(vertex);
         vertex.set(vc);
@@ -53,6 +73,12 @@ public final class VertexCellFactory {
 
         }
       */
+    /**
+     * <p>addCellToNewVertex.</p>
+     *
+     * @param vc a {@link org.kagaka.cell.VertexCell} object
+     * @return a {@link org.kagaka.cell.VertexCell} object
+     */
     public static VertexCell addCellToNewVertex(final VertexCell vc) {
         VertexImpl<VertexCell> vertex = new VertexImpl<VertexCell>();
         vertex.set(vc);
@@ -60,12 +86,26 @@ public final class VertexCellFactory {
         return vc;
     }
 
+    /**
+     * <p>joinVertexCell.</p>
+     *
+     * @param vc a {@link org.kagaka.cell.VertexCell} object
+     * @param vertex a {@link org.kagaka.graph.Vertex} object
+     * @return a {@link org.kagaka.cell.VertexCell} object
+     */
     public static VertexCell joinVertexCell(final VertexCell vc, final Vertex<VertexCell> vertex) {
         vertex.set(vc);
         vc.setVertex(vertex);
         return vc;
     }
 
+    /**
+     * <p>joinVertexCell.</p>
+     *
+     * @param vc a {@link org.kagaka.cell.VertexCell} object
+     * @param vertex a {@link org.kagaka.graph.WeightedEdgeVertex} object
+     * @return a {@link org.kagaka.cell.VertexCell} object
+     */
     public static VertexCell joinVertexCell(final VertexCell vc, final WeightedEdgeVertex<VertexCell> vertex) {
         vertex.set(vc);
         vc.setVertex(vertex);
