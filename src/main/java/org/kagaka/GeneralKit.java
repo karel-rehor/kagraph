@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public final class GeneralKit {
 
-    /** Constant <code>ID_LENGTH=16</code> */
+    /** Constant <code>ID_LENGTH=16</code>. */
     public static final int ID_LENGTH = 16;
 
     private GeneralKit() {
