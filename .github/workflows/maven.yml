@@ -29,7 +29,13 @@ jobs:
         env:
           VERIFY_SECRET: ${{ secrets.FOO_BAR }}
         run: |
-          echo "DEBUG VERIFY_SECRET ${VERIFY_SECRET}"
+          echo "DEBUG VERIFY_SECRET $VERIFY_SECRET"
+          if [[  "$VERIFY_SECRET" == "wumpus" ]]
+          then
+            echo "DEBUG secret passed"
+          else
+            echo "DEBUG secret mismatch"
+          fi
 
   tests:
 
