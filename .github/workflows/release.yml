@@ -11,6 +11,7 @@ jobs:
       SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
       SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
       MAVEN_SETTINGS_EXPERIM: ${{ vars.MAVEN_SETTINGS_FILE }}
+      GPG_PASSPHRASE_PRELIM: ${{ secrets.GPG_PASSPHRASE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -37,6 +38,23 @@ jobs:
             echo "Release requires SONATYPE_PASSWORD, which was not found. exiting"
             exit 1
           fi
+
+          if [[ -n "$GPG_PASSPHRASE_PRELIM" ]]
+          then
+            echo "have GPG_PASSPHRASE_PRELIM"
+          else
+            echo "Release requires SONATYPE_PASSWORD, which was not found. exiting"
+            exit 1
+          fi
+
+          if [[ "$GPG_PASSPHRASE_PRELIM" == "EMPTY" ]]
+          then
+            export GPG_PASSPHRASE=""
+          else
+            export GPG_PASSPHRASE="$GPG_PASSPHRASE"
+          fi
+
+          echo "DEBUG GPG_PASSPHRASE ${GPG_PASSPHRASE}"
 
           # Verify GPG2 environment
           if ! command -v gpg2 &> /dev/null
