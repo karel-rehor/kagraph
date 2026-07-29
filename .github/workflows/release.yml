@@ -49,9 +49,10 @@ jobs:
 
           if [[ "$GPG_PASSPHRASE_PRELIM" == "EMPTY" ]]
           then
+            echo "GPG_PASSPHRASE empty requested"
             export GPG_PASSPHRASE=""
           else
-            export GPG_PASSPHRASE="$GPG_PASSPHRASE"
+            export GPG_PASSPHRASE="$GPG_PASSPHRASE_PRELIM"
           fi
 
           echo "DEBUG GPG_PASSPHRASE ${GPG_PASSPHRASE}"
