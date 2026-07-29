@@ -28,13 +28,33 @@ jobs:
       - shell: bash
         env:
           VERIFY_SECRET: ${{ secrets.FOO_BAR }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          PHANTOM_SECRET: $ {{ secrets.PHANTOM_SECRET }}
         run: |
           echo "DEBUG VERIFY_SECRET $VERIFY_SECRET"
-          if [[  "$VERIFY_SECRET" == "doorpeep" ]]
+          if [[  "$VERIFY_SECRET" == "wumpus" ]]
           then
             echo "DEBUG secret passed"
           else
             echo "DEBUG secret mismatch"
+          fi
+
+          if [[ -n "$SONATYPE_PASSWORD" ]]
+          then
+            echo "DEBUG have SONATYPE_PASSWORD"
+          fi
+
+          if [[ -n "$SONATYPE_USERNAME" ]]
+          then
+            echo "DEBUG have SONATYPE_USERNAME"
+          fi
+
+          if [[ -n "$PHANTOM_SECRET" ]]
+          then
+            echo "DEBUG have PHANTOM_SECRET"
+          else
+            echo "DEBUG PHANTOM_SECRET not defined"
           fi
 
   tests:
