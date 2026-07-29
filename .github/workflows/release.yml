@@ -37,10 +37,10 @@ jobs:
             exit 1
           fi
           
-          echo "DEBUG MAVEN_SETTINGS_FILE ${env.MAVEN_SETTINGS_FILE}"
+          echo "DEBUG MAVEN_SETTINGS_FILE ${{ env.MAVEN_SETTINGS_FILE }}"
           
           # N.B. this is for debugging only.  TODO remove before release
-          mvn -s ${env.MAVEN_SETTINGS_FILE} help:effective-settings
+          mvn -s ${{ env.MAVEN_SETTINGS_FILE }} help:effective-settings
 
           
           
