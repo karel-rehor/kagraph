@@ -2,87 +2,106 @@ package org.kagaka.graph;
 
 import java.util.Hashtable;
 
+/**
+ * <p>WeightedEdgeVertexImpl class.</p>
+ *
+ * @author karl
+ * @version $Id: $Id
+ */
 public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements WeightedEdgeVertex<T> {
-    
-    static double MAX_WEIGHT = 1.0;
-    static double MIN_WEIGHT = -1.0;
-    
-    static void checkWeight(double weight) {
-        if(weight > MAX_WEIGHT || weight < MIN_WEIGHT) {
-            throw new IllegalArgumentException(String.format("The weight argument %.2f is out of bounds.  Max weight is %.2f,  Min weight is %.2f", 
-                    weight, MAX_WEIGHT, MIN_WEIGHT)); 
-        }
-    }
-    
+
+    static double maxWeight = 1.0;
+    static double minWeight = -1.0;
     Hashtable<WeightedEdgeVertex<T>, Double> weights;
-        
-    public WeightedEdgeVertexImpl(T t) {
+
+    /**
+     * <p>Constructor for WeightedEdgeVertexImpl.</p>
+     *
+     * @param t a T object
+     */
+    public WeightedEdgeVertexImpl(final T t) {
         super(t);
         weights = new Hashtable<WeightedEdgeVertex<T>, Double>();
     }
-    
+
+    static void checkWeight(final double weight) {
+        if (weight > maxWeight || weight < minWeight) {
+            throw new IllegalArgumentException(
+                String.format("The weight argument %.2f is out of bounds.  Max weight is %.2f,  Min weight is %.2f",
+                weight, maxWeight, minWeight));
+        }
+    }
+
+    /** {@inheritDoc} */
     @Override
     public Double getMaxWeight() {
         // TODO Auto-generated method stub
-        return MAX_WEIGHT;
+        return maxWeight;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Double getMinWeight() {
         // TODO Auto-generated method stub
-        return MIN_WEIGHT;
+        return minWeight;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Hashtable<WeightedEdgeVertex<T>, Double> getWeights() {
         // TODO Auto-generated method stub
         return weights;
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Double getWeight(WeightedEdgeVertex<T> key) {
+    public Double getWeight(final WeightedEdgeVertex<T> key) {
         // if Hashtable.get() returns null cannot implicitly get Double.doubleValue()
         return weights.get(key);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void setWeight(WeightedEdgeVertex<T> key, Double val) {
+    public void setWeight(final WeightedEdgeVertex<T> key, final Double val) {
         checkWeight(val);
-        if(!edges.contains(key)) {
+        if (!edges.contains(key)) {
             throw new IllegalStateException(String.format("%s is not an edge of weighted vertex %s", key, this));
         }
-        weights.put(key, val);        
+        weights.put(key, val);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void addEdge(WeightedEdgeVertex<T> vertex, Double weight) {
+    public void addEdge(final WeightedEdgeVertex<T> vertex, final Double weight) {
         checkWeight(weight);
         edges.add(vertex);
         weights.put(vertex, weight);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void addMutualEdge(WeightedEdgeVertex<T> vertex, Double weight, Double myWeight) {        
+    public void addMutualEdge(final WeightedEdgeVertex<T> vertex, final Double weight, final Double myWeight) {
         addEdge(vertex, weight);
-        if(!vertex.getEdges().contains(this)) {
+        if (!vertex.getEdges().contains(this)) {
             vertex.addEdge(this, myWeight);
         }
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void removeWeightedEdge(WeightedEdgeVertex<T> vertex) {
+    public void removeWeightedEdge(final WeightedEdgeVertex<T> vertex) {
         edges.remove(vertex);
         weights.remove(vertex);
-        if(vertex.getEdges().contains(this)) {
+        if (vertex.getEdges().contains(this)) {
             vertex.removeWeightedEdge(this);
         }
     }
-    
+
+    /** {@inheritDoc} */
     @Override
     public void removeAllWeightedEdges() {
         super.removeAllEdges();
         weights.clear();
     }
-
 
 }
