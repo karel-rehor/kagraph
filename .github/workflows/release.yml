@@ -57,6 +57,8 @@ jobs:
 
           echo "DEBUG GPG_PASSPHRASE ${GPG_PASSPHRASE}"
 
+          echo "GPG_PASSPHRASE=${GPG_PASSPHRASE}" >> $GITHUB_ENV
+
           # Verify GPG2 environment
           if ! command -v gpg2 &> /dev/null
           then
@@ -75,5 +77,5 @@ jobs:
           mvn -s ${{ vars.MAVEN_SETTINGS_FILE }} help:effective-settings
       - name: Release
         run: |
-          echo "DEBUG GPG_PASSPHRASE #${GPG_PASSPHRASE}#"
+          echo "DEBUG GPG_PASSPHRASE #${{ env.GPG_PASSPHRASE }}#"
 
