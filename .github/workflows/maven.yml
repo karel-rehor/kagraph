@@ -20,6 +20,17 @@ on:
       - main
 
 jobs:
+  verify:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - shell: bash
+        env:
+          VERIFY_SECRET: ${{ secrets.FOO_BAR }}
+        run: |
+          echo "DEBUG VERIFY_SECRET ${VERIFY_SECRET}"
+
   tests:
 
     runs-on: ubuntu-latest
