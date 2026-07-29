@@ -1,0 +1,49 @@
+name: Release
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    permissions:
+      contents: write # may want to update version
+    runs-on: ubuntu-latest
+    env:
+      SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+      SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Verify
+        run: |
+          if [[ -n "$SONATYPE_USERNAME" ]]
+          then
+            echo "DEBUG have SONATYPE_USERNAME"
+          else 
+            echo "Release requires SONATYPE_USERNAME, which was not found. exiting"
+            exit 1
+          fi
+
+          if [[ -n "$SONATYPE_PASSWORD" ]]
+          then
+            echo "have SONATYPE_PASSWORD"
+          else 
+            echo "Release requires SONATYPE_PASSWORD, which was not found. exiting"
+            exit 1
+          fi
+          
+          echo "DEBUG MAVEN_SETTINGS_FILE ${MAVEN_SETTINGS_FILE}"
+          
+          # N.B. this is for debugging only.  TODO remove before release
+          mvn -s ${MAVEN_SETTINGS_FILE} help:effective-settings
+
+          
+          
+
+
+
