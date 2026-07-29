@@ -73,3 +73,7 @@ jobs:
 
           # N.B. this is for debugging only.  TODO remove before release
           mvn -s ${{ vars.MAVEN_SETTINGS_FILE }} help:effective-settings
+      - name: Release
+        run: |
+          echo "DEBUG GPG_PASSPHRASE #${GPG_PASSPHRASE}#"
+
