@@ -30,7 +30,7 @@ jobs:
           VERIFY_SECRET: ${{ secrets.FOO_BAR }}
         run: |
           echo "DEBUG VERIFY_SECRET $VERIFY_SECRET"
-          if [[  "$VERIFY_SECRET" == "wumpus" ]]
+          if [[  "$VERIFY_SECRET" == "doorpeep" ]]
           then
             echo "DEBUG secret passed"
           else
