@@ -50,7 +50,7 @@ jobs:
             echo "DEBUG have SONATYPE_USERNAME"
           fi
 
-          if [[ -n "$PHANTOM_SECRET" ]]
+          if [[ "$PHANTOM_SECRET" != '' ]]
           then
             echo "DEBUG have PHANTOM_SECRET"
           else
