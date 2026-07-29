@@ -10,6 +10,7 @@ jobs:
     env:
       SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
       SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+      MAVEN_SETTINGS_EXPERIM: ${{ vars.MAVEN_SETTINGS_FILE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -37,10 +38,11 @@ jobs:
             exit 1
           fi
           
-          echo "DEBUG MAVEN_SETTINGS_FILE ${{ env.MAVEN_SETTINGS_FILE }}"
+          echo "DEBUG MAVEN_SETTINGS_EXPERIM ${MAVEN_SETTINGS_EXPERIM}"
+          echo "DEBUG MAVEN_SETTINGS_FILE ${{ vars.MAVEN_SETTINGS_FILE }}"
           
           # N.B. this is for debugging only.  TODO remove before release
-          mvn -s ${{ env.MAVEN_SETTINGS_FILE }} help:effective-settings
+          mvn -s ${{ vars.MAVEN_SETTINGS_FILE }} help:effective-settings
 
           
           
