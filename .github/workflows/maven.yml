@@ -30,7 +30,7 @@ jobs:
           VERIFY_SECRET: ${{ secrets.FOO_BAR }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-          PHANTOM_SECRET: $ {{ secrets.PHANTOM_SECRET }}
+          PHANTOM_SECRET: ${{ secrets.PHANTOM_SECRET }}
         run: |
           echo "DEBUG VERIFY_SECRET $VERIFY_SECRET"
           if [[  "$VERIFY_SECRET" == "wumpus" ]]
