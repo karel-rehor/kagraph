@@ -37,13 +37,8 @@ jobs:
             echo "Release requires SONATYPE_PASSWORD, which was not found. exiting"
             exit 1
           fi
-          
-          echo "DEBUG MAVEN_SETTINGS_EXPERIM ${MAVEN_SETTINGS_EXPERIM}"
-          echo "DEBUG MAVEN_SETTINGS_FILE ${{ vars.MAVEN_SETTINGS_FILE }}"
-          
-          # N.B. this is for debugging only.  TODO remove before release
-          mvn -s ${{ vars.MAVEN_SETTINGS_FILE }} help:effective-settings
 
+          # Verify GPG2 environment
           if ! command -v gpg2 &> /dev/null
           then
             echo "Failed to locate gpg2 on this host.  GPG2 is required to continue."
@@ -51,5 +46,11 @@ jobs:
           fi
           
           gpg2 --version
-          env.GPG_EXECUTABLE=$(command -v gpg2)
+          export GPG_EXECUTABLE=$(command -v gpg2)
           echo "DEBUG GPG_EXECUTABLE ${GPG_EXECUTABLE}"
+
+          echo "DEBUG MAVEN_SETTINGS_EXPERIM ${MAVEN_SETTINGS_EXPERIM}"
+          echo "DEBUG MAVEN_SETTINGS_FILE ${{ vars.MAVEN_SETTINGS_FILE }}"
+
+          # N.B. this is for debugging only.  TODO remove before release
+          mvn -s ${{ vars.MAVEN_SETTINGS_FILE }} help:effective-settings
