@@ -22,9 +22,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          server-id: central
-          server-username: SONATYPE_USERNAME
-          server-password: SONATYPE_PASSWORD
+          settings-path: "./settings.xml"
       - name: Verify
         run: |
           if [[ -n "$SONATYPE_USERNAME" ]]
