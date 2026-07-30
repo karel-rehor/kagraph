@@ -21,6 +21,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
       - name: Verify
         run: |
           if [[ -n "$SONATYPE_USERNAME" ]]
