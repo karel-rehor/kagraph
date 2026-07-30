@@ -9,6 +9,6 @@ else
   echo "Running locally"
 fi
 
-echo "DEBUG tag name #${RELEASE_TAG}#"
+echo "DEBUG git hub event #${GITHUB_EVENT}#"
 
 env
