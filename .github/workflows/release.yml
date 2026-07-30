@@ -88,4 +88,6 @@ jobs:
         run: |
           echo "DEBUG GPG_PASSPHRASE #${{ env.GPG_PASSPHRASE }}#"
           echo "DEBUG ROVER_ACTION ${{ env.ROVER_ACTION }}"
+          echo "=== DEBUG Ensure build shared ===
+          ls -al ./target
 
