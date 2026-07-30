@@ -7,6 +7,7 @@ import java.util.Hashtable;
  *
  * @author karl
  * @version $Id: $Id
+ * @param <T> - any type
  */
 public interface WeightedEdgeVertex<T> extends Vertex<T> {
 

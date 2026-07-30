@@ -10,6 +10,7 @@ import java.util.Set;
  *
  * @author karl
  * @version $Id: $Id
+ * @param <T> - any type
  */
 public class VertexImpl<T> implements Vertex<T> {
 

@@ -11,8 +11,15 @@ import org.kagaka.graph.GraphProperties;
  *
  * @author karl
  * @version $Id: $Id
+ * @param <T> - any VertexCell type
  */
 public class GridFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
+
+    /**
+     * Default constructor.
+     */
+    public GridFactoryImpl() {
+    }
 
     /** {@inheritDoc} */
     @SuppressWarnings("unchecked")

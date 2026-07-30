@@ -15,6 +15,9 @@ import org.kagaka.transform.Transform;
  */
 public class VertexCellImpl extends CellImpl implements VertexCell {
 
+    /**
+     * The vertex.
+     */
     protected Vertex<VertexCell> vertex;
 
     /**

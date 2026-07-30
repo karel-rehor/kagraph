@@ -7,6 +7,7 @@ import org.kagaka.cell.VertexCell;
  *
  * @author karl
  * @version $Id: $Id
+ * @param <T> - any VertexCell type
  */
 public interface GraphFactory<T extends VertexCell> {
 

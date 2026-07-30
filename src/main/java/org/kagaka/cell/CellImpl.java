@@ -14,6 +14,10 @@ import org.kagaka.transform.Transform;
 public class CellImpl implements Cell {
 
     private final String id;
+
+    /**
+     * Transformer.
+     */
     protected Transform transform = () -> {
     };
 

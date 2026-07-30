@@ -5,8 +5,9 @@ import java.util.Hashtable;
 /**
  * <p>WeightedEdgeVertexImpl class.</p>
  *
- * @author karl
+ * @author karl*
  * @version $Id: $Id
+ * @param <T> - any type
  */
 public class WeightedEdgeVertexImpl<T> extends VertexImpl<T> implements WeightedEdgeVertex<T> {
 

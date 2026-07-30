@@ -9,7 +9,7 @@ import org.kagaka.graph.Vertex;
 /**
  * <p>Grid class.</p>
  *
- * @param <T>
+ * @param <T> - any type
  * @author karl
  * <p>
  * Graph in the shape of a two dimensional grid

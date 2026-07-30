@@ -9,6 +9,7 @@ import org.kagaka.cell.VertexCell;
  *
  * @author karl
  * @version $Id: $Id
+ * @param <T> - any VertexCell type
  */
 public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
 /*
@@ -35,6 +36,12 @@ public class GraphFactoryImpl<T extends VertexCell> implements GraphFactory<T> {
     */
 
     // TODO Implement and test OR Remove this class
+
+    /**
+     * Default constructor.
+     */
+    public GraphFactoryImpl() {
+    }
 
     /** {@inheritDoc} */
     @Override

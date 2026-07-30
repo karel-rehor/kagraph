@@ -14,9 +14,13 @@ import java.util.Stack;
  *
  * @author karl
  * @version $Id: $Id
+ * @param <T> - any type
  */
 public class GraphImpl<T> implements Graph<T> {
 
+    /**
+     * Vertices.
+     */
     protected List<Vertex<T>> vertices = new ArrayList<>();
 
     /**

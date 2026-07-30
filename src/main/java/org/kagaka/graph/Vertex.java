@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * <p>Vertex interface.</p>
  *
- * @param <T>
+ * @param <T> - any type
  * @author karl
  *
  * <p>
