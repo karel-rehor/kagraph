@@ -90,4 +90,5 @@ jobs:
           echo "DEBUG ROVER_ACTION ${{ env.ROVER_ACTION }}"
           echo "=== DEBUG Ensure build shared ==="
           ls -al ./target
+          mvn -s ./settings.xml deploy -DperformRelease=true
 
