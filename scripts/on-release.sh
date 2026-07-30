@@ -9,6 +9,4 @@ else
   echo "Running locally"
 fi
 
-echo "DEBUG git hub event #${GITHUB_EVENT}#"
-
 env
