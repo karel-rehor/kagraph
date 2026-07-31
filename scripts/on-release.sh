@@ -37,6 +37,8 @@ github_check(){
 
     if [[ "$GITHUB_REF_NAME" =~ $RELEASE_TAG_MATCH ]]; then
       echo "Detected matching tag value in GITHUB_REF_NAME (${GITHUB_REF_NAME}).  Continuing for debugging purposes."
+      export RELEASE_TAG_NAME="${GITHUB_REF_NAME}"
+      return
     else
       echo " Checking env"
       env
