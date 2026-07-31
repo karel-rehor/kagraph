@@ -3,6 +3,13 @@
 echo "Starting ${0}"
 
 github_check(){
+
+  if [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
+    echo "WARNING: This script is targeted for 'release' not ${GITHUB_EVENT_NAME}."
+    echo "Continuing for debugging."
+    return
+  fi
+
   if [ "${GITHUB_EVENT_NAME}" != "release" ]; then
     echo "This script can run only on 'release'.  Detected Github event ${GITHUB_EVENT_NAME}."
     exit 1
