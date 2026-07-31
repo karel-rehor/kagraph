@@ -27,6 +27,13 @@ github_check(){
     return
   fi
 
+  if [ "${GITHUB_EVENT_NAME}" == "push" ]; then
+    echo "WARNING: this script is targeted for 'release' not ${GITHUB_EVENT_NAME}"
+    echo " Checking env"
+    env
+    exit 1
+  fi
+
   if [ "${GITHUB_EVENT_NAME}" != "release" ]; then
     echo "This script can run only on 'release'.  Detected Github event ${GITHUB_EVENT_NAME}."
     exit 1
@@ -86,7 +93,7 @@ verify_changelog() {
     printf "ERROR: Latest HEADER_TAG in CHANGELOG.md (%s) does not match release number (%s) from git tag (%s)\n" \
     "$HEADER_TAG" \
     "$RELEASE_NUM" \
-    "$CIRCLE_TAG"
+    "$RELEASE_TAG_NAME"
     printf "Please update the latest HEADER_TAG in CHANGELOG.md\n"
     printf "%s" "${FAILURE_BOILERPLATE}"
     exit 1

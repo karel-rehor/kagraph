@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+      PUSH_TAG_NAME: ${{ github.event.push.tag_name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -28,7 +29,8 @@ jobs:
           echo "Experimental releasing"
           echo "DEBUG GITHUB_SHA #${GITHUB_SHA}#"
           echo "DEBUG GITHUB_REF #${GITHUB_REF}#"
-          echo "DEBUG tag name #${{ github.event.release.tag_name }}#"
+          echo "DEBUG release tag name #${{ github.event.release.tag_name }}#"
+          echo "DEBUG push tag name #${{ github.event.push.tag_name }}#"
       - name: Script
         run: |
           ./scripts/on-release.sh
