@@ -32,10 +32,16 @@ github_check(){
   fi
 
   if [ "${GITHUB_EVENT_NAME}" == "push" ]; then
+    RELEASE_TAG_MATCH="^v[0-9]+(\.[0-9]+){2}(-(rc|beta)[0-9]+)?$"
     echo "WARNING: this script is targeted for 'release' not ${GITHUB_EVENT_NAME}"
-    echo " Checking env"
-    env
-    exit 1
+
+    if [[ "$GITHUB_REF_NAME" =~ $RELEASE_TAG_MATCH ]]; then
+      echo "Detected matching tag value in GITHUB_REF_NAME (${GITHUB_REF_NAME}).  Continuing for debugging purposes."
+    else
+      echo " Checking env"
+      env
+      exit 1
+    fi
   fi
 
   if [ "${GITHUB_EVENT_NAME}" != "release" ]; then
