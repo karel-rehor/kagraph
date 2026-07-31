@@ -19,6 +19,10 @@ IS_SNAPSHOT=false
 
 FAILURE_BOILERPLATE="Please delete the tag ${CIRCLE_TAG} and the related release, and start again."
 
+# GITHUB_REF_NAME=v0.2.0
+
+echo "DEBUG GITHUB_REF_NAME #${GITHUB_REF_NAME}#"
+
 github_check(){
 
   if [ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]; then
