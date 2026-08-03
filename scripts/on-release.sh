@@ -14,6 +14,7 @@ CHANGELOG_PATH="${PROJECT_DIR}/CHANGELOG.md"
 README_PATH="${PROJECT_DIR}/README.md"
 POM_XML_PATH="${PROJECT_DIR}/pom.xml"
 
+RELEASE_TAG_NAME=""
 RELEASE_NUM=""
 NEXT_RELEASE_NUM=""
 NEXT_RELEASE_BRANCH_BASE="chore/prepare-next-release-"
@@ -141,12 +142,12 @@ verify_version(){
 
   if [ "${PROJECT_VERSION}" != "${RELEASE_NUM}" ]
   then
-    printf "PROJECT_VERSION %s in pom.xml does not match tag %s" "${PROJECT_VERSION}" "${CIRCLE_TAG}"
+    printf "PROJECT_VERSION %s in pom.xml does not match tag %s" "${PROJECT_VERSION}" "${RELEASE_TAG_NAME}"
     printf "%s\n" "${FAILURE_BOILERPLATE}"
     exit 1
   fi
 
-  printf "pom.xml project version (%s) checks with release tag (%s): OK ✓\n" "${PROJECT_VERSION}" "${CIRCLE_TAG}"
+  printf "pom.xml project version (%s) checks with release tag (%s): OK ✓\n" "${PROJECT_VERSION}" "${RELEASE_TAG_NAME}"
   # TODO further checks
 
 }
