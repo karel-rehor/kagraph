@@ -17,7 +17,6 @@ jobs:
       GPG_PASSPHRASE_PRELIM: ${{ secrets.GPG_PASSPHRASE }}
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
       IS_PRERELEASE: ${{ github.event.release.prerelease }}
-      RELEASE_AUTHOR_NAME: ${{ github.event.release.author.name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -35,8 +34,8 @@ jobs:
       - name: Script
         run: |
           echo "DEBUG IS_PRERELEASE ${IS_PREPRELEASE}"
-          echo "DEBUG RELEASE_AUTHOR_NAME ${RELEASE_AUTHOR_NAME}"
-          if [[ ${{github.event.release.prerelease}} ]]; then
+          echo "DEBUG GITHUB_ACTOR ${GITHUB_ACTOR}"
+          if [[ ${IS_PRERELEASE} ]]; then
              export IS_PREPRELEASE=true
           else
              export IS_PREPRELEASE=false
