@@ -26,11 +26,11 @@ FAILURE_BOILERPLATE="Please delete the tag ${CIRCLE_TAG} and the related release
 
 echo "DEBUG GITHUB_REF_NAME #${GITHUB_REF_NAME}#"
 
-if [[ ${IS_PRERELEASE} ]]; then
-  "DEBUG detected PRERELEASE"
-else
-  "DEBUG PRERELEASE NOT detected"
-fi
+#if [[ ${IS_PRERELEASE} ]]; then
+#  "DEBUG detected PRERELEASE"
+#else
+#  "DEBUG PRERELEASE NOT detected"
+#fi
 
 echo "DEBUG IS_PRERELEASE #${IS_PRERELEASE}#"
 
