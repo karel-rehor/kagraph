@@ -116,7 +116,7 @@ jobs:
       - name: Prepare next cycle
         run: |
           if [[ "${IS_PRERELEASE}" == "true" ]]; then
-            echo "This is a prerelease so the next release cycle will not be prepared.
+            echo "This is a prerelease so the next release cycle will not be prepared."
             echo "TODO exit cleanly here.  But for debugging purposes currently continue"
           fi
           echo "Preparing next release cycle"
