@@ -115,7 +115,11 @@ jobs:
           # mvn -s ./settings.xml deploy -DperformRelease=true
       - name: Prepare next cycle
         run: |
-          steps: |
-            gh --version
-            # gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+          if [[ "${IS_PRERELEASE}" == "true" ]]; then
+            echo "This is a prerelease so the next release cycle will not be prepared.
+            echo "TODO exit cleanly here.  But for debugging purposes currently continue"
+          fi
+          echo "Preparing next release cycle"
+          gh --version
+          # gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
 
