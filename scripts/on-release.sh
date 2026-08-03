@@ -11,6 +11,9 @@ fi
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PROJECT_DIR="${SCRIPT_DIR}/.."
 CHANGELOG_PATH="${PROJECT_DIR}/CHANGELOG.md"
+README_PATH="${PROJECT_DIR}/README.md"
+POM_XML_PATH="${PROJECT_DIR}/pom.xml"
+
 RELEASE_NUM=""
 NEXT_RELEASE_NUM=""
 NEXT_RELEASE_BRANCH_BASE="chore/prepare-next-release-"
