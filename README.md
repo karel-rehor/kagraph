@@ -26,7 +26,7 @@ Added simply for testing release pipeline.
 <dependency>
     <groupId>io.github.karel-rehor</groupId>
     <artifactId>kagraph</artifactId>
-    <version>0.0.0</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
