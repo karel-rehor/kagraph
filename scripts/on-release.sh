@@ -14,7 +14,7 @@ CHANGELOG_PATH="${PROJECT_DIR}/CHANGELOG.md"
 README_PATH="${PROJECT_DIR}/README.md"
 POM_XML_PATH="${PROJECT_DIR}/pom.xml"
 
-RELEASE_TAG_NAME=""
+RELEASE_TAG_NAME="${RELEASE_TAG_NAME:+:}"
 RELEASE_NUM=""
 NEXT_RELEASE_NUM=""
 NEXT_RELEASE_BRANCH_BASE="chore/prepare-next-release-"
@@ -41,7 +41,7 @@ github_check(){
 
     if [[ "$GITHUB_REF_NAME" =~ $RELEASE_TAG_MATCH ]]; then
       echo "Detected matching tag value in GITHUB_REF_NAME (${GITHUB_REF_NAME}).  Continuing for debugging purposes."
-      export RELEASE_TAG_NAME="${GITHUB_REF_NAME}"
+      RELEASE_TAG_NAME="${GITHUB_REF_NAME}"
       return
     else
       echo " Checking env"
