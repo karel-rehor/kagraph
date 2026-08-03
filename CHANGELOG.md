@@ -1,4 +1,4 @@
-## 0.2.0-SNAPSHOT [unreleased]
+## 0.2.0 [2026-08-03]
 
 ### CI Pipeline
 

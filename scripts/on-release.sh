@@ -123,6 +123,32 @@ verify_changelog() {
   fi
 }
 
+verify_version(){
+  printf "verifying version\n"
+  PROJECT_VERSION=$(xmllint --xpath "//*[local-name()='project']/*[local-name()='version']/text()" ${POM_XML_PATH}"")
+  printf "Project version from pom.xml is %s\n"  "${PROJECT_VERSION}"
+
+  if [[  "${PROJECT_VERSION}" == *SNAPSHOT ]]
+  then
+    printf "Version in %s (%s) is a snapshot.\n" "${POM_XML_PATH}" "${PROJECT_VERSION}"
+    printf "This script does not release snapshots.\n"
+    printf "%s\n" "${FAILURE_BOILERPLATE}"
+    exit 1
+  fi
+
+  if [ "${PROJECT_VERSION}" != "${RELEASE_NUM}" ]
+  then
+    printf "PROJECT_VERSION %s in pom.xml does not match tag %s" "${PROJECT_VERSION}" "${CIRCLE_TAG}"
+    printf "%s\n" "${FAILURE_BOILERPLATE}"
+    exit 1
+  fi
+
+  printf "pom.xml project version (%s) checks with release tag (%s): OK ✓\n" "${PROJECT_VERSION}" "${CIRCLE_TAG}"
+  # TODO further checks
+
+}
+
+
 echo "Running in Github Actions container."
 
 github_check
@@ -131,6 +157,7 @@ verify_rc_or_beta
 set_release_number
 
 verify_changelog
+verify_version
 
 setup
 
