@@ -16,7 +16,7 @@ jobs:
       MAVEN_SETTINGS_EXPERIM: ${{ vars.MAVEN_SETTINGS_FILE }}
       GPG_PASSPHRASE_PRELIM: ${{ secrets.GPG_PASSPHRASE }}
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
-      IS_PRERELEASE: ${{ github.event.release.is_prerelease }}
+      IS_PRERELEASE: ${{ github.event.release.prerelease }}
       RELEASE_AUTHOR_NAME: ${{ github.event.release.author.name }}
     steps:
       - name: Checkout
@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "DEBUG IS_PRERELEASE ${IS_PREPRELEASE}"
           echo "DEBUG RELEASE_AUTHOR_NAME ${RELEASE_AUTHOR_NAME}"
-          if [[ ${{github.event.release.is_prerelease}} ]]; then
+          if [[ ${{github.event.release.prerelease}} ]]; then
              export IS_PREPRELEASE=true
           else
              export IS_PREPRELEASE=false
