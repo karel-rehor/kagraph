@@ -162,6 +162,33 @@ verify_version(){
 
 }
 
+verify_readme(){
+  printf "Verifying README %s\n" "${README_PATH}"
+  README_NODE_RAW="$(sed -n "/<version>.*<\/version>/p" "${README_PATH}")"
+
+  if [ -z "${README_NODE_RAW}" ]
+  then
+    printf "Example in %s with <version> tag not found.\n" "${README_PATH}"
+    printf "The %s file should include an example with the current release version.\n" "${README_PATH}"
+    printf "Exiting...\n"
+    printf "%s\n" "${FAILURE_BOILERPLATE}"
+    exit 1
+  fi
+
+  README_NODE="${README_NODE_RAW#"${README_NODE_RAW%%[![:space:]]*}"}"
+  README_VERSION="$(echo "${README_NODE}" | sed "s/<version>//" | sed "s/<\/version>//")"
+
+  if ! [ "${RELEASE_NUM}" == "${README_VERSION}" ]
+  then
+    VERSION_LINE=$(grep -n "<version>.*</version>" "${README_PATH}" | awk -F '[:]' '{ print $1 }')
+    printf "Release tag (%s) does not match example <version> in README.md (%s) on line %s.\n" "${RELEASE_NUM}" "${README_VERSION}" "${VERSION_LINE}"
+    printf "Please update README.md to the current release before continuing.\n"
+    printf "%s\n" "${FAILURE_BOILERPLATE}"
+    exit 1
+  fi
+
+  printf "Version in README.md (%s) OK ✓.\n" "${README_VERSION}"
+}
 
 echo "Running in Github Actions container."
 
@@ -171,6 +198,7 @@ verify_rc_or_beta
 set_release_number
 
 verify_changelog
+verify_readme
 verify_version
 
 setup

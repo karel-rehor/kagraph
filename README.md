@@ -18,6 +18,18 @@ Defines the following basic types
   states.
 * __Factories__ - to help instantiate and manage the above.
 
+## Installation
+
+Added simply for testing release pipeline.
+
+```xml
+<dependency>
+    <groupId>io.github.karel-rehor</groupId>
+    <artifactId>kagraph</artifactId>
+    <version>0.0.0</version>
+</dependency>
+```
+
 ### TODO
 
 * Refactor so that...
