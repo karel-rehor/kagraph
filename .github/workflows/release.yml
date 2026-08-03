@@ -17,6 +17,7 @@ jobs:
       GPG_PASSPHRASE_PRELIM: ${{ secrets.GPG_PASSPHRASE }}
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
       IS_PRERELEASE: ${{ github.event.release.prerelease }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -112,4 +113,9 @@ jobs:
           echo "Proceeding with release to Maven Central"
           # TODO reactivate - temporarily deactivated while investigating other aspects of working with actions.
           # mvn -s ./settings.xml deploy -DperformRelease=true
+      - name: Prepare next cycle
+        run: |
+          steps: |
+            gh --version
+            # gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
 
