@@ -104,6 +104,12 @@ jobs:
           echo "DEBUG ROVER_ACTION ${{ env.ROVER_ACTION }}"
           echo "=== DEBUG Ensure build shared ==="
           ls -al ./target
-          # TODO reactive - temporarily deactivated while investigating other aspects of working with actions.
+          if [[ ${IS_PRERELEASE} ]]; then
+             echo "This is a pre release and will not be deployed to Maven Central."
+             return
+          fi
+
+          echo "Proceeding with release to Maven Central"
+          # TODO reactivate - temporarily deactivated while investigating other aspects of working with actions.
           # mvn -s ./settings.xml deploy -DperformRelease=true
 
