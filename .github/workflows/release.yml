@@ -35,12 +35,12 @@ jobs:
         run: |
           echo "DEBUG IS_PRERELEASE ${IS_PREPRELEASE}"
           echo "DEBUG GITHUB_ACTOR ${GITHUB_ACTOR}"
-          if [[ ${IS_PRERELEASE} ]]; then
-             export IS_PREPRELEASE=true
-          else
-             export IS_PREPRELEASE=false
-          fi
-          echo "DEBUG 2nd IS_PRERELEASE *${IS_PREPRELEASE}*"
+          # if [[ ${IS_PRERELEASE} ]]; then
+          #    export IS_PREPRELEASE=true
+          # else
+          #    export IS_PREPRELEASE=false
+          # fi
+          # echo "DEBUG 2nd IS_PRERELEASE *${IS_PREPRELEASE}*"
           ./scripts/on-release.sh
       - name: Verify
         run: |
