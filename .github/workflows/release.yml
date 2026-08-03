@@ -104,7 +104,7 @@ jobs:
           echo "DEBUG ROVER_ACTION ${{ env.ROVER_ACTION }}"
           echo "=== DEBUG Ensure build shared ==="
           ls -al ./target
-          if [[ ${IS_PRERELEASE} ]]; then
+          if [[ "${IS_PRERELEASE}" == "true" ]]; then
              echo "This is a pre release and will not be deployed to Maven Central."
              exit 0
           fi
