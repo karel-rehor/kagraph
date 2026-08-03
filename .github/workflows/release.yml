@@ -16,6 +16,7 @@ jobs:
       MAVEN_SETTINGS_EXPERIM: ${{ vars.MAVEN_SETTINGS_FILE }}
       GPG_PASSPHRASE_PRELIM: ${{ secrets.GPG_PASSPHRASE }}
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+      IS_PRERELEASE: ${{ github.event.release.isPrerelease }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
