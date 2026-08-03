@@ -34,7 +34,15 @@ jobs:
           sudo apt-get install libxml2-utils
       - name: Script
         run: |
+          echo "DEBUG IS_PRERELEASE ${IS_PREPRELEASE}"
+          echo "DEBUG RELEASE_AUTHOR_NAME ${RELEASE_AUTHOR_NAME}"
           ./scripts/on-release.sh
+          if [[ ${{github.event.release.is_prerelease}} ]]; then
+             export IS_PREPRELEASE=true
+          else
+             export IS_PREPRELEASE=false
+          fi
+          echo "DEBUG 2nd IS_PRERELEASE *${IS_PREPRELEASE}*"
       - name: Verify
         run: |
           if [[ -n "$SONATYPE_USERNAME" ]]
