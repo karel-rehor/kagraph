@@ -17,7 +17,7 @@ jobs:
       GPG_PASSPHRASE_PRELIM: ${{ secrets.GPG_PASSPHRASE }}
       RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
       IS_PRERELEASE: ${{ github.event.release.is_prerelease }}
-      RELEASE_AUTHOR: ${{ github.event.release.author }}
+      RELEASE_AUTHOR_NAME: ${{ github.event.release.author.name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6

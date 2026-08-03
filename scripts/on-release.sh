@@ -26,7 +26,7 @@ FAILURE_BOILERPLATE="Please delete the tag ${CIRCLE_TAG} and the related release
 
 echo "DEBUG GITHUB_REF_NAME #${GITHUB_REF_NAME}#"
 echo "DEBUG IS_PRERELEASE #${IS_PRERELEASE}#"
-echo "DEBUG AUTHOR #${RELEASE_AUTHOR}#"
+echo "DEBUG AUTHOR NAME #${RELEASE_AUTHOR_NAME}#"
 
 github_check(){
 
