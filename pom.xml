@@ -5,7 +5,7 @@
 
     <groupId>io.github.karel-rehor</groupId>
     <artifactId>kagraph</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0-SNAPSHOT</version>
 
     <name>kagraph</name>
     <description>
@@ -33,7 +33,7 @@
         <connection>scm:git:git@github.com:karel-rehor/kagraph.git</connection>
         <developerConnection>scm:git:git@github.com:karel-rehor/kagraph.git</developerConnection>
         <url>https://github.com/karel-rehor/kagraph/tree/main</url>
-        <tag>kagraph-0.2.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
