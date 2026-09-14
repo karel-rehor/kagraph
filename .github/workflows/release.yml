@@ -73,9 +73,9 @@ jobs:
 
           echo "DEBUG GPG_PASSPHRASE ${GPG_PASSPHRASE}"
 
-          echo "GPG_PASSPHRASE=${GPG_PASSPHRASE}" >> $GITHUB_ENV
+          echo "GPG_PASSPHRASE=${GPG_PASSPHRASE}" >> "$GITHUB_ENV"
 
-          echo "ROVER_ACTION=JUMP_THE_FENCE" >> $GITHUB_ENV
+          echo "ROVER_ACTION=JUMP_THE_FENCE" >> "$GITHUB_ENV"
 
           # Verify GPG2 environment
           if ! command -v gpg2 &> /dev/null
