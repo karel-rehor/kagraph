@@ -34,9 +34,10 @@ jobs:
           sudo apt-get install libxml2-utils
       - name: Script
         run: |
+          echo "DEBUG temporarily skipping on-release.sh
           echo "DEBUG IS_PRERELEASE ^^^${IS_PRERELEASE}^^^"
           echo "DEBUG GITHUB_ACTOR ${GITHUB_ACTOR}"
-          ./scripts/on-release.sh
+          # ./scripts/on-release.sh
       - name: Verify
         run: |
           if [[ -n "$SONATYPE_USERNAME" ]]
