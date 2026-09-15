@@ -2,10 +2,14 @@
 
 RC_OR_BETA=false
 
+if [[ -z "${RELEASE_TAG_NAME}" ]]
+then
+  RELEASE_TAG_NAME=0.0.0-RC3
+fi
 
-echo "DEBUG TEST_TAG_NAME ${TEST_TAG_NAME}"
+echo "DEBUG RELEASE_TAG_NAME ${RELEASE_TAG_NAME}"
 
-LOWER_TAG_NAME=$(echo "${TEST_TAG_NAME}" | tr '[:upper:]' '[:lower:]')
+LOWER_TAG_NAME=$(echo "${RELEASE_TAG_NAME}" | tr '[:upper:]' '[:lower:]')
 
 echo "DEBUG LOWER_TAG_NAME ${LOWER_TAG_NAME}"
 
