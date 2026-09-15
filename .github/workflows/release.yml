@@ -137,12 +137,14 @@ jobs:
           if [[ "${IS_PRERELEASE}" == "true" ]]; then
             echo "This is a prerelease so the next release cycle will not be prepared."
             echo "TODO exit cleanly here.  But for debugging purposes currently continue"
+            # exit 0
           fi
 
           if [[ "${RC_OR_BETA}" == "true" ]]
           then
             echo "This is an RC or BETA release and will not be deployed to Maven Central."
-            exit "TODO exit cleanly here. But for debugging purposes currently continue."
+            echo "TODO exit cleanly here. But for debugging purposes currently continue."
+            # exit 0
           fi
 
           echo "Preparing next release cycle"
