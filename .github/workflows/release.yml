@@ -35,7 +35,7 @@ jobs:
       - name: Script
         run: |
           ./scripts/experim.sh
-          echo "DEBUG RC_OR_BETA #${RC_OR_BETA}"
+          echo "DEBUG RC_OR_BETA #${RC_OR_BETA}#"
           echo "RC_OR_BETA=${RC_OR_BETA}"  >> "$GITHUB_ENV"
           echo "DEBUG temporarily skipping on-release.sh"
           echo "DEBUG IS_PRERELEASE ^^^${IS_PRERELEASE}^^^"
