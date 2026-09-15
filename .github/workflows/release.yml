@@ -34,10 +34,16 @@ jobs:
           sudo apt-get install libxml2-utils
       - name: Script
         run: |
+          .scripts/experim.sh
+          echo "DEBUG RC_OR_BETA #${RC_OR_BETA}"
+          echo "RC_OR_BETA=${RC_OR_BETA}"  >> "$GITHUB_ENV"
           echo "DEBUG temporarily skipping on-release.sh"
           echo "DEBUG IS_PRERELEASE ^^^${IS_PRERELEASE}^^^"
           echo "DEBUG GITHUB_ACTOR ${GITHUB_ACTOR}"
           # ./scripts/on-release.sh
+      - name: Environment
+        run: |
+          env
       - name: Verify
         run: |
           if [[ -n "$SONATYPE_USERNAME" ]]
