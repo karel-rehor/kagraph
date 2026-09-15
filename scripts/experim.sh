@@ -15,7 +15,7 @@ echo "DEBUG LOWER_TAG_NAME ${LOWER_TAG_NAME}"
 
 if echo "${LOWER_TAG_NAME}" | grep -q "rc|beta"
 then
-  RC_OR_BETA=false
+  RC_OR_BETA=true
 fi
 
 export RC_OR_BETA
