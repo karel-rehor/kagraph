@@ -34,7 +34,7 @@ jobs:
           sudo apt-get install libxml2-utils
       - name: Script
         run: |
-          .scripts/experim.sh
+          ./scripts/experim.sh
           echo "DEBUG RC_OR_BETA #${RC_OR_BETA}"
           echo "RC_OR_BETA=${RC_OR_BETA}"  >> "$GITHUB_ENV"
           echo "DEBUG temporarily skipping on-release.sh"
